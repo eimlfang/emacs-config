@@ -7,7 +7,18 @@
 (setq auto-save-default nil)
 ;; 显示行号
 (global-linum-mode t)
+
+;; 高亮颜色
+;; (set-face-attribute 'region nil :background "#666")
+
 ;; 匹配括号
+(define-advice show-paren-function (:around (fn) fix-show-paren-function)
+  "Heighlight enclosing parens."
+  (cond ((looking-at-p "\\s(") (funcall fn))
+	(t (save-excursion
+	     (ignore-errors (backward-up-list))
+	     (funcall fn)))))
+
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
 
 (delete-selection-mode t)
@@ -65,5 +76,31 @@
 (require 'dired-x)
 
 (setq dired-dwim-target t)
+
+(defun hidden-dos-eol ()
+  "Do not show ^M in files containing mixed UNIX and DOS line ending."
+  (interactive)
+  (setq buffer-display-table (make-display-table)
+	(aset buffer-display-table ?\^M [])))
+
+(defun remove-dos-eol()
+  "Replace DOS eolns CR LF with unix eolns CR"
+  (interactive)
+  (goto-char (point-min))
+  (while (search-forward "\r" nil t) (replace-match "")))
+
+(defun occur-dwim ()
+  "Call `occur` with a same default."
+  (interactive)
+  (push (if (region-active-p)
+	    (buffer-substring-no-properties
+	     (region-beginning)
+	     (region-end))
+	  (let ((sym (thing-at-point 'symbol)))
+	    (when (string sym)
+	      (regexp-quote sym))))
+	regexp-history)
+  (call-interactively 'occur))
+
 
 (provide 'init-better-defaults)

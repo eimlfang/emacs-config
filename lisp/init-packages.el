@@ -1,4 +1,4 @@
-;; '("melpa" . "https://melpa.org/packages/")
+ ;; '("melpa" . "https://melpa.org/packages/")
 ;; http://elpa.emacs-china.org/melpa/ ;; 国内镜像源
 (require 'cl)
 
@@ -26,6 +26,10 @@
 			    popwin
 			    markdown-mode
 			    reveal-in-osx-finder
+			    web-mode
+			    js2-refactor
+			    expand-region
+			    iedit
 			    ) "Default packages")
 
 (setq package-selected-packages eimlfang/packages)
@@ -51,16 +55,6 @@
 (require 'php-mode)
 ;; rust-mode
 (require 'package)
-(setq auto-mode-alist
-      (append
-       '(("\\.rs\\'" . rust-mode))
-       auto-mode-alist))
-
-;; 配置js2-mode
-(setq auto-mode-alist
-      (append
-       '(("\\.js\\'" . js2-mode))
-       auto-mode-alist))
 
 ;; markdown-mode
 ;; (require 'markdown-mode)
@@ -79,7 +73,8 @@
 ;; 括号匹配
 ;; (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
 (smartparens-global-mode t)
-
+;; emacs-lisp模式下不匹配 '
+(sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
 
 (require 'popwin)
 (popwin-mode t)
@@ -91,8 +86,59 @@
 (global-company-mode t)
 
 ;; 加载nomokai主题
-(load-theme 'monokai t)
+;; (load-theme 'monokai t)
 
 (require 'reveal-in-osx-finder)
+
+(require 'web-mode)
+
+(setq auto-mode-alist
+      (append
+       '(("\\.rs\\'" . rust-mode)
+	 ("\\.js\\'" . js2-mode)
+	 ("\\.html\\'" . web-mode)
+	 ("\\.html?\\'" . web-mode)
+	 ("\\.\\(?:php\\|phtml\\)\\'" . php-mode))
+       auto-mode-alist))
+
+(add-hook 'web-mode-hook 'my-web-mode-indent-setup)
+
+(defun my-toggle-web-indent()
+  (interactive)
+  (if (or (eq major-mode 'js-mode) (eq major-mode 'js2-mode))
+      (progn
+	(setq js-indent-level (if (= js-indent-level 2) 4 2))
+	(setq js2-basic-offset (if (= js2-basic-offset 2) 4 2))))
+  (if (eq major-mode 'web-mode)
+      (progn (setq web-mode-markup-indent-offset (if (= web-mode-markup-indent-offset 2) 4 2))
+	     (setq web-mode-css-indent-offset (if (= web-mode-css-indent-offset 2) 4 2))
+	     (setq web-mode-coe-indent-offset (if (= web-mode-code-indent-offset 2) 4 2))))
+  (if (eq major-mode 'css-mode)
+      (setq css-indent-offset (if (= css-indent-offset 2) 4 2)))
+  (setq indent-tabs-mode nil))
+
+;; config for js2-refactor
+(add-hook 'js2-mode-hook #'js2-refactor-mode)
+(js2r-add-keybindings-with-prefix "C-c C-m")
+
+;;(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+;;(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+;;(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+;;(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+;;(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+;;(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+;;(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+;;(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+;; config for web mode
+(defun my-web-mode-indent-setup()
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2))
+
+(require 'expand-region)
+
+(require 'iedit)
+
 
 (provide 'init-packages)

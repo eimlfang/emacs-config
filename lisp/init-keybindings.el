@@ -27,4 +27,16 @@
 
 ;; (global-set-key (kbd "C-c z") 'reveal-in-osx-finder)
 
+;; 显示所有函数
+(global-set-key (kbd "M-s i") 'counsel-imenu) 
+
+(global-set-key (kbd "C-=") 'er/expand-region)
+
+;; (global-set-key (kbd "M-s e") 'iedit-mode)
+
+(global-set-key (kbd "M-s m") 'set-mark-command)
+
+;; (global-set-key (kbd "M-s o") 'occur-dwim)
+
+
 (provide 'init-keybindings)
