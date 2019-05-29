@@ -102,5 +102,5 @@
 	regexp-history)
   (call-interactively 'occur))
 
-
+(set-language-environment "UTF-8")
 (provide 'init-better-defaults)

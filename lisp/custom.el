@@ -7,8 +7,9 @@
  '(custom-safe-themes
    (quote
     ("bd7b7c5df1174796deefce5debc2d976b264585d51852c962362be83932873d9" default)))
+ '(org-agenda-files nil)
  '(popwin:popup-window-position (quote right))
- '(popwin:popup-window-width 80))
+ '(popwin:popup-window-width 90))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

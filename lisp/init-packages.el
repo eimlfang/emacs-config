@@ -15,7 +15,6 @@
 			    company
 			    monokai-theme
 			    hungry-delete
-			    php-mode
 			    swiper
 			    counsel
 			    smartparens
@@ -30,6 +29,10 @@
 			    js2-refactor
 			    expand-region
 			    iedit
+			    helm-ag
+			    flycheck
+			    php-mode
+			    auto-yasnippet
 			    ) "Default packages")
 
 (setq package-selected-packages eimlfang/packages)
@@ -53,6 +56,8 @@
 (require 'nodejs-repl)
 ;; php-mode
 (require 'php-mode)
+;;(add-hook 'php-mode-hook
+;;    '(lambda () (define-abbrev php-mode-abbrev-table "ex" "extends")))
 ;; rust-mode
 (require 'package)
 
@@ -97,8 +102,7 @@
        '(("\\.rs\\'" . rust-mode)
 	 ("\\.js\\'" . js2-mode)
 	 ("\\.html\\'" . web-mode)
-	 ("\\.html?\\'" . web-mode)
-	 ("\\.\\(?:php\\|phtml\\)\\'" . php-mode))
+	 ("\\.html?\\'" . web-mode))
        auto-mode-alist))
 
 (add-hook 'web-mode-hook 'my-web-mode-indent-setup)
@@ -140,5 +144,12 @@
 
 (require 'iedit)
 
+;; (require 'org-pomodoro)
+
+;; (global-flycheck-mode)
+(add-hook 'php-mode-hook 'flycheck-mode)
+
+(yas-reload-all)
+(add-hook 'prog-mode-hook #'yas-minor-mode)
 
 (provide 'init-packages)

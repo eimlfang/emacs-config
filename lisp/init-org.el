@@ -1,8 +1,21 @@
-;; org文档添加语法高亮
-(require 'org)
-(setq org-src-fontify-natively t)
+;; org
 
-(setq org-agenda-files '("~/org"))
-(global-set-key (kbd "C-c a") 'org-agenda)
+(with-eval-after-load 'org
+  (setq org-src-fontify-natively t)
+
+  (setq org-agenda-files '("~/.emacs.d/org"))
+  
+  (setq org-capture-templates
+	'(("t" "Todo" entry (file+headline "~/.emacs.d/org/gtd.org" "工作安排")
+	   "* TODO [#8] %?\n %i\n"
+	   :empty-lines 1)))
+  )
+
+
+
+(defun org-remember ()
+  "Todo org file at ~/.emacs.d/org/gtd.org"
+  (interactive)
+  'org-capture)
 
 (provide 'init-org)

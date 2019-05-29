@@ -1,0 +1,8 @@
+* 工作安排
+
+** TODO [#8] emacs学习
+   SCHEDULED: <2019-05-30 Thu 02:10>
+
+** TODO [#8] 修改文案微信模版通知
+   SCHEDULED: <2019-05-30 Thu 10:30>
+
