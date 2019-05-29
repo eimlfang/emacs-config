@@ -1,4 +1,4 @@
-x3(add-to-list 'load-path "~/.emacs.d/lisp")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 
 ;; 快速打开init.el
 (defun open-my-init-file()

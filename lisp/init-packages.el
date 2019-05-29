@@ -25,6 +25,7 @@
 			    exec-path-from-shell
 			    popwin
 			    markdown-mode
+			    reveal-in-osx-finder
 			    ) "Default packages")
 
 (setq package-selected-packages eimlfang/packages)
@@ -91,5 +92,7 @@
 
 ;; 加载nomokai主题
 (load-theme 'monokai t)
+
+(require 'reveal-in-osx-finder)
 
 (provide 'init-packages)

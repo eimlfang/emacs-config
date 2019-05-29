@@ -1111,8 +1111,6 @@
 	     (1 2))
 	    (test-simple
 	     (1 2 0))
-	    (cl-lib
-	     (0 5))
 	    (emacs
 	     (25)))
 	   "A modular front-end for interacting with external debuggers" tar
@@ -1147,10 +1145,8 @@
 	       [(1 0 1)
 		((load-relative
 		  (1 2))
-		 (cl-lib
-		  (0 5))
 		 (realgud
-		  (1 4 5))
+		  (1 5 0))
 		 (emacs
 		  (25)))
 		"Realgud front-end to lldb" single

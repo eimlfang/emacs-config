@@ -20,4 +20,11 @@
 
 (global-set-key (kbd "C-c p f") 'counsel-git)
 
+(global-set-key (kbd "s-/") 'hippie-expand)
+
+(with-eval-after-load 'dired
+  (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file))
+
+;; (global-set-key (kbd "C-c z") 'reveal-in-osx-finder)
+
 (provide 'init-keybindings)
