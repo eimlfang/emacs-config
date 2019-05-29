@@ -10,6 +10,10 @@
 ;; 匹配括号
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
 
+(delete-selection-mode t)
+
+(setq enable-recursive-minibuffers t)
+
 ;; 缩写模式
 ;;(abbrev-mode t)
 ;;(define-abbrev-table 'global-abbrev-table '(
