@@ -1,7 +1,7 @@
-
-
 ;; 绑定F2到快速打开init.el
 (global-set-key (kbd "<f2>") 'open-my-init-file)
+;; 绑定F3到快速打开keymap.md
+(global-set-key (kbd "<f3>") 'open-keymap)
 
 (global-set-key "\C-s" 'swiper)
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
@@ -18,5 +18,6 @@
 
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
+(global-set-key (kbd "C-c p f") 'counsel-git)
 
 (provide 'init-keybindings)
