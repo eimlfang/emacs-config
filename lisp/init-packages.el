@@ -66,9 +66,7 @@
 ;; 括号匹配
 ;; (add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
 (smartparens-global-mode t)
-;; 最近打开文件
-(require 'recentf)
-(recentf-mode 1)
+
 
 (require 'popwin)
 (popwin-mode t)

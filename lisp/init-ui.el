@@ -2,8 +2,6 @@
 (tool-bar-mode -1)
 ;; 关闭滚动条
 (scroll-bar-mode -1)
-;; 显示行号
-(global-linum-mode t)
 ;; 关闭启动页面
 (setq inhibit-splash-screen t)
 ;; 设置光标样式
