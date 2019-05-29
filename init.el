@@ -1,17 +1,11 @@
 (add-to-list 'load-path "~/.emacs.d/lisp")
 
 (require 'init-packages)
+(require 'init-ui)
 
 ;; 关闭提示音
 (setq ring-bell-function 'ignore)
-;; 关闭工具栏
-(tool-bar-mode -1)
-;; 关闭滚动条
-(scroll-bar-mode -1)
-;; 显示行号
-(global-linum-mode t)
-;; 关闭启动页面
-(setq inhibit-splash-screen t)
+
 
 ;; 快速打开init.el
 (defun open-my-init-file()
@@ -29,8 +23,6 @@
 (setq recentf-max-menu-items 25)
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
-;; 设置光标样式
-(setq-default cursor-type 'bar)
 
 ;; 禁止备份文件
 (setq make-backup-files nil)
@@ -39,14 +31,11 @@
 
 (delete-selection-mode t)
 
-;; 默认开启全屏
-(setq initial-frame-alist (quote ((fullscreen . maximized))))
 
 ;; 匹配括号
 (add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
 
-;; 显示当前行
-(global-hl-line-mode t)
+
 
 ;; 从磁盘重新加载文件
 (global-auto-revert-mode t)
