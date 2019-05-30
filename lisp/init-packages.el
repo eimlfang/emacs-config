@@ -1,4 +1,4 @@
- ;; '("melpa" . "https://melpa.org/packages/")
+  ;; '("melpa" . "https://melpa.org/packages/")
 ;; http://elpa.emacs-china.org/melpa/ ;; 国内镜像源
 (require 'cl)
 
@@ -33,6 +33,9 @@
 			    flycheck
 			    php-mode
 			    auto-yasnippet
+			    evil
+			    window-numbering
+			    powerline
 			    ) "Default packages")
 
 (setq package-selected-packages eimlfang/packages)
@@ -41,6 +44,7 @@
   (loop for pkg in eimlfang/packages
 	when (not (package-installed-p pkg)) do (return nil)
 	finally (return t)))
+
 (unless (eimlfang/packages-installed-p)
   (message "%s" "Refreshing package datbase...")
   (package-refresh-contents)
@@ -152,4 +156,13 @@
 (yas-reload-all)
 (add-hook 'prog-mode-hook #'yas-minor-mode)
 
+;; (evil-mode 0)
+
+;; (setq evil-want-C-u-scroll t)
+
+;; window-numbering setup
+(window-numbering-mode 1)
+;; powerline
+(require 'powerline)
+(powerline-default-theme)
 (provide 'init-packages)

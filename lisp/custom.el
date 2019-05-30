@@ -8,6 +8,9 @@
    (quote
     ("bd7b7c5df1174796deefce5debc2d976b264585d51852c962362be83932873d9" default)))
  '(org-agenda-files nil)
+ '(package-selected-packages
+   (quote
+    (powerline company monokai-theme hungry-delete swiper counsel smartparens js2-mode rust-mode nodejs-repl exec-path-from-shell popwin markdown-mode reveal-in-osx-finder web-mode js2-refactor expand-region iedit helm-ag flycheck php-mode auto-yasnippet evil window-numbering)))
  '(popwin:popup-window-position (quote right))
  '(popwin:popup-window-width 90))
 (custom-set-faces

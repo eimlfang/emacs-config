@@ -1,7 +1,35 @@
-;; 绑定F2到快速打开init.el
-(global-set-key (kbd "<f2>") 'open-my-init-file)
+;; 快速打开init.el
+(defun open-my-init-file()
+  (interactive)
+  (find-file "~/.emacs.d/init.el"))
+
+(defun open-keyboard-init-file()
+  (interactive)
+  (find-file "~/.emacs.d/lisp/init-keybindings.el"))
+
+(defun open-default-init-file()
+  (interactive)
+  (find-file "~/.emacs.d/lisp/init-better-defaults.el"))
+
+(defun open-package-init-file()2
+  (interactive)
+  (find-file "~/.emacs.d/lisp/init-better-defaults.el"))
+
+(defun open-ui-init-file()
+  (interactive)
+  (find-file "~/.emacs.d/lisp/init-better-defaults.el"))
+
+(defun open-readme()
+  (interactive)
+  (find-file "~/.emacs.d/readme.org"))
+
+(global-set-key (kbd "<f2> i") 'open-my-init-file)
+(global-set-key (kbd "<f2> k") 'open-keyboard-init-file)
+(global-set-key (kbd "<f2> d") 'open-default-init-file)
+(global-set-key (kbd "<f2> p") 'open-package-init-file)
+(global-set-key (kbd "<f2> u") 'open-ui-init-file)
 ;; 绑定F3到快速打开keymap.md
-(global-set-key (kbd "<f3>") 'open-keymap)
+(global-set-key (kbd "<f3>") 'open-readme)
 
 (global-set-key "\C-s" 'swiper)
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
